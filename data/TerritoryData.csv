@@ -1,0 +1,42 @@
+1,Alaska,128,128,0,North America,2;6;32,108;92
+2,Alberta,255,255,80,North America,1;6;7;9,197;154
+3,Central America,255,255,128,North America,4;9;13,177;322
+4,Eastern US,128,100,0,North America,3;7;8;9,283;251
+5,Greenland,255,255,0,North America,6;7;8;15,580;50
+6,Northwest Territory,80,80,39,North America,1;2;5;7,236;98
+7,Ontario,148,148,73,North America,2;4;5;6;8;9,302;158
+8,Quebec,255,255,32,North America,4;5;7,406;155
+9,Western US,80,40,39,North America,2;3;4;7,164;228
+10,Argentina,255,0,0,South America,11;12,384;663
+11,Brazil,128,64,64,South America,10;12;13;25,439;528
+12,Peru,128,0,0,South America,10;11;13,368;559
+13,Venezuela,255,128,128,South America,3;11;12,328;437
+14,Great Britain,0,16,128,Europe,15;16;17;20,667;135
+15,Iceland,0,255,255,Europe,5;14;17,684;78
+16,Northern Europe,0,0,255,Europe,14;17;18;19;20,778;170
+17,Scandinavia,0,128,255,Europe,14;15;16;19,778;114
+18,Southern Europe,0,64,128,Europe,16;19;20;23;25;33,837;211
+19,Ukraine,0,0,128,Europe,16;17;18;26;35;37,903;143
+20,Western Europe,0,64,255,Europe,14;16;18;25,733;196
+21,Congo,174,87,0,Africa,22;25;26,835;469
+22,East Africa,255,128,0,Africa,21;23;24;25;26;33,908;410
+23,Egypt,128,64,0,Africa,18;22;25;33,833;309
+24,Madagascar,255,87,0,Africa,22;26,998;589
+25,North Africa,255,145,91,Africa,11;18;20;21;22;23,712;350
+26,South Africa,128,32,0,Africa,21;22;24,840;590
+27,Afghanistan,132,255,128,Asia,19;28;29;33;37,1035;209
+28,China,0,148,64,Asia,27;29;34;35;36;37,1236;275
+29,India,0,128,128,Asia,27;28;33;35,1123;322
+30,Irkutsk,128,255,0,Asia,32;34;36;38,1222;151
+31,Japan,64,255,0,Asia,32;34,1446;246
+32,Kamchatka,0,128,64,Asia,1;30;31;34;38,1384;96
+33,Middle East,0,128,32,Asia,18;19;22;23;27;29,939;271
+34,Mongolia,0,64,0,Asia,28;30;31;32;36,1245;209
+35,Siam,128,255,128,Asia,28;29;41,1254;367
+36,Siberia,0,128,0,Asia,28;30;34;37;38,1123;97
+37,Ural,0,32,32,Asia,19;27;28;36,1035;118
+38,Yakutsk,0,128,160,Asia,32;34;36;38,1255;95
+39,Eastern Australia,64,0,64,Oceania,40;42,1478;620
+40,New Guinea,255,0,255,Oceania,39;41;42,1502;477
+41,Indonesia,128,0,255,Oceania,35;40;42,1327;466
+42,Western Australia,128,0,64,Oceania,39;40;41,1349;628

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Input Handlers">
+      <UniqueIdentifier>{2b453b3a-daf4-40e1-9349-450b1c6c3119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI Panels">
+      <UniqueIdentifier>{4abfe2cd-52fe-4cb7-b48b-4b1300c49ea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{8ed2c541-7aa3-46fa-9043-d408bca69013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Widgets">
+      <UniqueIdentifier>{eaa2b5c6-a39a-4dea-819a-67b5d44bb9a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Classes">
+      <UniqueIdentifier>{da9fe4cc-11eb-4b7d-9905-3f7591a6abdf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Risk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenManagerControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Input Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeInputHandler.cpp">
+      <Filter>Input Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="SetupGameInputHandler.cpp">
+      <Filter>Input Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeUIPanel.cpp">
+      <Filter>UI Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="SetupGameUIPanel.cpp">
+      <Filter>UI Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="UIPanel.cpp">
+      <Filter>UI Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="SetupGameScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="ComboBox.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUIPanel.cpp">
+      <Filter>UI Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="GameInputHandler.cpp">
+      <Filter>Input Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Game Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Province.cpp">
+      <Filter>Game Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculationFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Game Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="AI.cpp">
+      <Filter>Game Classes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenManagerControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeInputHandler.h">
+      <Filter>Input Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Input Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="SetupGameInputHandler.h">
+      <Filter>Input Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeUIPanel.h">
+      <Filter>UI Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="UIPanel.h">
+      <Filter>UI Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="SetupGameUIPanel.h">
+      <Filter>UI Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="SetupGameScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="ComboBox.h">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUIPanel.h">
+      <Filter>UI Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInputHandler.h">
+      <Filter>Input Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Province.h">
+      <Filter>Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CalculationFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AI.h">
+      <Filter>Game Classes</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
