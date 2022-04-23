@@ -99,6 +99,9 @@
     <ClCompile Include="AI.cpp">
       <Filter>Game Classes</Filter>
     </ClCompile>
+    <ClCompile Include="GameFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="AI.h">
       <Filter>Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFunctions.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

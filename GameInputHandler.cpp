@@ -1,5 +1,6 @@
 #include "GameInputHandler.h"
 #include "CalculationFunctions.h"
+#include "GameFunctions.h"
 
 GameInputHandler::GameInputHandler(GameScreen* screen) {
 	gameScreen = screen;
@@ -38,13 +39,13 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui,
 	if (name == "End Attack") {
 		if (gameScreen->getPhase() == gameScreen->getGamePhases()[2]) {
 			gameScreen->clearProvinceSelections();
-			gameScreen->updateNewArmiesText("Attack Phase: Select\n1) territory to attack from\n2) territory to attack");
+			gameScreen->updateNewArmiesText("Attack Phase: Select in order\n1) Territory to attack from\n2) Territory to attack");
 			gameScreen->deactivateEndAttackButton(gui);
 		}
 
 		else if (gameScreen->getPhase() == gameScreen->getGamePhases()[3]) {
 			gameScreen->clearProvinceSelections();
-			gameScreen->updateNewArmiesText("Move Phase: Select\n1) territory to move armies from\n2) territory to move armies into");
+			gameScreen->updateNewArmiesText("Move Phase: Select in order\n1) Territory to move armies from\n2) Territory to move armies into");
 			gameScreen->deactivateEndAttackButton(gui);
 		}
 	}
@@ -55,14 +56,26 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui,
 			gameScreen->setPhase(gameScreen->getGamePhases()[3]);
 			gameScreen->clearProvinceSelections();
 			gui.get<tgui::Button>("End Attack")->setText("End Move");
-			gameScreen->updateNewArmiesText("Move Phase: Select\n1) territory to move armies from\n2) territory to move armies into");
+			gameScreen->updateNewArmiesText("Move Phase: Select in order\n1) Territory to move armies from\n2) Territory to move armies into");
 		}
 
 		//If in move phase, change to place armies phase
 		else if (gameScreen->getPhase() == gameScreen->getGamePhases()[3]) {
 			gameScreen->setPhase(gameScreen->getGamePhases()[1]);
 			gameScreen->clearProvinceSelections();
-			gameScreen->updateNewArmiesText("Place Your New Armies.\nAvailable Armies: ");
+
+			for (int i = 0; i < gameScreen->getPlayers().size(); i++) {
+				int newArmies = GameFunctions::calculateNewArmies(gameScreen->getGameBoard(), i);
+				gameScreen->getPlayers()[i].setAvailableArmies(newArmies);
+			}
+
+			std::string temp = "Place Your Armies.\nAvailable Armies: ";
+			temp += std::to_string(gameScreen->getPlayers()[0].getAvailableArmies());
+			gameScreen->updateNewArmiesText(temp);
+
+			std::cout << "Player armies: " << gameScreen->getPlayers()[0].getAvailableArmies() << std::endl;
+
+			gameScreen->deactivateEndTurnButton(gui);
 		}
 	}
 }
@@ -91,7 +104,7 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui)
 				if (gameScreen->getGameBoard().getFreeProvinces() == 0) {
 					gameScreen->setPhase(gameScreen->getGamePhases()[1]);
 
-					std::string temp = "Place Your Starting Armies.\nAvailable Armies: ";
+					std::string temp = "Place Your Armies.\nAvailable Armies: ";
 					temp += std::to_string(gameScreen->getPlayers()[0].getAvailableArmies());
 
 					gameScreen->updateNewArmiesText(temp);
@@ -106,7 +119,7 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui)
 			if (gameScreen->getProvinceList()[province].getOwner() == 0) {
 				gameScreen->placeArmies(province);
 
-				std::string temp = "Place Your Starting Armies.\nAvailable Armies: ";
+				std::string temp = "Place Your Armies.\nAvailable Armies: ";
 				temp += std::to_string(gameScreen->getPlayers()[0].getAvailableArmies());
 
 				gameScreen->updateNewArmiesText(temp);
@@ -114,7 +127,7 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui)
 				//Start attack phase once all starting armies are placed on the board
 				if (gameScreen->getPlayers()[0].getAvailableArmies() == 0) {
 					gameScreen->setPhase(gameScreen->getGamePhases()[2]);
-					gameScreen->updateNewArmiesText("Attack Phase: Select\n1) territory to attack from\n2) territory to attack");
+					gameScreen->updateNewArmiesText("Attack Phase: Select in order\n1) Territory to attack from\n2) Territory to attack");
 					gameScreen->activateEndTurnButton(gui);
 					gui.get<tgui::Button>("End Attack")->setText("End Attack");
 				}

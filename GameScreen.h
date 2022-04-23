@@ -63,7 +63,7 @@ public:
 	const std::string& getPhase();
 	void setPhase(std::string newPhase);
 
-	std::vector<Player> getPlayers();
+	std::vector<Player>& getPlayers();
 	void initializeGame(int playerNumber, std::string playerColour, std::vector<tgui::String> colourList);
 	void clearPlayers();
 	void clearArmies();

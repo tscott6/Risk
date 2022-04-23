@@ -150,6 +150,7 @@
     <ClCompile Include="CalculationFunctions.cpp" />
     <ClCompile Include="ComboBox.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="GameFunctions.cpp" />
     <ClCompile Include="GameInputHandler.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameUIPanel.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="CalculationFunctions.h" />
     <ClInclude Include="ComboBox.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="GameFunctions.h" />
     <ClInclude Include="GameInputHandler.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GameUIPanel.h" />

@@ -146,7 +146,7 @@ void GameScreen::changeOwnership(sf::Color newColor, int index) {
 	players[0].setAvailableArmies(players[0].getAvailableArmies() - 1);
 }
 
-std::vector<Player> GameScreen::getPlayers() {
+std::vector<Player>& GameScreen::getPlayers() {
 	return players;
 }
 
