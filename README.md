@@ -8,7 +8,7 @@ following both [SFML's tutorial](https://www.sfml-dev.org/tutorials/2.5/start-vc
 for project configuration.  
 sfml-graphics, sfml-window, sfml-system, and tgui libraries are required for successful compilation.
 
-<img src="TheGame.jpg" alt="The Game (still a baby!)"/>
+<img src="pictures/TheGame.jpg" alt="The Game (still a baby!)"/>
 
 ### Future Work
  - Implement AI for proper gameplay.
