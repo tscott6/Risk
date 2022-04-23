@@ -15,6 +15,6 @@ sfml-graphics, sfml-window, sfml-system, and tgui libraries are required for suc
  - Improve GUI and visualization of game states and stats.
  - Code overhaul and refactoring - e.g. better leverage SOLID principles in the design.
  - Enable makefile support for project for simple install and use.
- - Flesh out game to include traditional Risk rules (# of armies & dice per attack, cards for added reinforcements, etc.)
+ - Flesh out game to include traditional Risk rules (select # of armies & dice per attack, cards for added reinforcements, etc.)
  - Generalize game to support additional maps and options (if Paradox can do it, so can this!)
  - Multithreading for multiplayer support over local network.
