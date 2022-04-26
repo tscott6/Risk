@@ -8,11 +8,13 @@ following both [SFML's tutorial](https://www.sfml-dev.org/tutorials/2.5/start-vc
 for project configuration.  
 sfml-graphics, sfml-window, sfml-system, and tgui libraries are required for successful compilation.
 
-<img src="pictures/TheGame.jpg" alt="The Game (still a baby!)"/>
+<img src="pictures/TheGame.jpg" alt="The Game (still just a baby!)"/>
 
 ### Future Work
  - Implement AI for proper gameplay.
  - Improve GUI and visualization of game states and stats.
  - Code overhaul and refactoring - e.g. better leverage SOLID principles in the design.
  - Enable makefile support for project for simple install and use.
+ - Flesh out game to include traditional Risk rules (select # of armies & dice per attack, cards for added reinforcements, etc.)
+ - Generalize game to support additional maps and options (if Paradox can do it, so can this!)
  - Multithreading for multiplayer support over local network.
