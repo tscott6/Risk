@@ -39,6 +39,7 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui,
 	if (name == "End Attack") {
 		if (gameScreen->getPhase() == gameScreen->getGamePhases()[2]) {
 			gameScreen->clearProvinceSelections();
+			gameScreen->setAttackRound(0);
 			gameScreen->updateNewArmiesText("Attack Phase: Select in order\n1) Territory to attack from\n2) Territory to attack");
 			gameScreen->deactivateEndAttackButton(gui);
 		}
@@ -59,7 +60,7 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui,
 			gameScreen->updateNewArmiesText("Move Phase: Select in order\n1) Territory to move armies from\n2) Territory to move armies into");
 		}
 
-		//If in move phase, change to place armies phase
+		//If in move phase, execute AI player turns and change to place armies phase
 		else if (gameScreen->getPhase() == gameScreen->getGamePhases()[3]) {
 			gameScreen->setPhase(gameScreen->getGamePhases()[1]);
 			gameScreen->clearProvinceSelections();
@@ -69,6 +70,11 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui,
 				gameScreen->getPlayers()[i].setAvailableArmies(newArmies);
 			}
 
+			//Execute AI turn in this loop
+			for (int i = 1; i < gameScreen->getPlayers().size(); i++) {
+				gameScreen->AIPlaceArmies(gameScreen->getPlayers()[i], i);
+			}
+
 			std::string temp = "Place Your Armies.\nAvailable Armies: ";
 			temp += std::to_string(gameScreen->getPlayers()[0].getAvailableArmies());
 			gameScreen->updateNewArmiesText(temp);
@@ -76,6 +82,7 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui,
 			std::cout << "Player armies: " << gameScreen->getPlayers()[0].getAvailableArmies() << std::endl;
 
 			gameScreen->deactivateEndTurnButton(gui);
+			gameScreen->deactivateEndAttackButton(gui);
 		}
 	}
 }
@@ -98,6 +105,9 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui)
 				gameScreen->changeOwnership(gameScreen->getPlayers()[0].getPlayerColour(), province);
 				gameScreen->getGameBoard().setFreeProvinces(gameScreen->getGameBoard().getFreeProvinces() - 1);
 				std::cout << "Free Provinces: " << gameScreen->getGameBoard().getFreeProvinces() << std::endl;
+
+				gameScreen->getPlayers()[0].setOwnedProvinces(gameScreen->getPlayers()[0].getOwnedProvinces() + 1);
+
 				gameScreen->AISetup();
 				
 				//Start army placement phase once no more unclaimed territories remain
@@ -119,13 +129,19 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui)
 			if (gameScreen->getProvinceList()[province].getOwner() == 0) {
 				gameScreen->placeArmies(province);
 
-				std::string temp = "Place Your Armies.\nAvailable Armies: ";
+				std::string temp = "Place Your Armies.\n\nAvailable Armies: ";
 				temp += std::to_string(gameScreen->getPlayers()[0].getAvailableArmies());
 
 				gameScreen->updateNewArmiesText(temp);
 
 				//Start attack phase once all starting armies are placed on the board
 				if (gameScreen->getPlayers()[0].getAvailableArmies() == 0) {
+
+					//Need to fix this to ensure initial AI placement done in tandem with player
+					for (int i = 0; i < gameScreen->getPlayers().size(); i++) {
+						gameScreen->AIPlaceArmies(gameScreen->getPlayers()[i], i);
+					}
+
 					gameScreen->setPhase(gameScreen->getGamePhases()[2]);
 					gameScreen->updateNewArmiesText("Attack Phase: Select in order\n1) Territory to attack from\n2) Territory to attack");
 					gameScreen->activateEndTurnButton(gui);
@@ -161,8 +177,8 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui)
 				if (CalculationFunctions::adjacencySearch(gameScreen->getProvinceList()[province], gameScreen->getFirstProvinceSelected())) {
 
 					std::string temp = gameScreen->getNewArmiesText();
-					temp += gameScreen->getProvinceList()[province].getName();
-					temp += "\nClick on territory again to launch attack";
+					std::string secondName = gameScreen->getProvinceList()[province].getName();
+					temp = temp + secondName + "\n\nClick on " + secondName + " again to launch attack";
 
 					gameScreen->updateNewArmiesText(temp);
 					gameScreen->setIsSecondProvinceSelected(true);
@@ -184,6 +200,14 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui)
 				if (attackingArmies > 1) {
 					int attackResult = CalculationFunctions::attackResult();
 
+					std::string firstName = gameScreen->getProvinceList()[gameScreen->getFirstProvinceSelected() - 1].getName();
+					std::string secondName = gameScreen->getProvinceList()[gameScreen->getSecondProvinceSelected() - 1].getName();
+
+					gameScreen->setAttackRound(gameScreen->getAttackRound() + 1);
+
+					std::string temp = firstName + " Attacking to " + secondName + "\n\n";
+					temp = temp + "Round " + std::to_string(gameScreen->getAttackRound());
+
 					//Attack successful, destroy a defending army
 					if (attackResult == 1) {
 
@@ -191,11 +215,31 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui)
 						gameScreen->getProvinceList()[gameScreen->getSecondProvinceSelected() - 1].setArmyCount(defendingArmies);
 						gameScreen->getGameBoard().getArmyCounts()[gameScreen->getSecondProvinceSelected() - 1].setString(std::to_string(defendingArmies));
 
+						temp += ": Victory! ";
+
 						//Check if no more defending armies, and hand over control of territory to the player if true
 						if (defendingArmies == 0) {
+
+							int oldOwner = gameScreen->getProvinceList()[gameScreen->getSecondProvinceSelected() - 1].getOwner();
+
 							gameScreen->getProvinceList()[gameScreen->getSecondProvinceSelected() - 1].setOwner(0);
 							gameScreen->getGameBoard().changeArmyTokenColour(gameScreen->getPlayers()[0].getPlayerColour(), gameScreen->getSecondProvinceSelected() - 1);
 							gameScreen->getGameBoard().getArmyCounts()[gameScreen->getSecondProvinceSelected() - 1].setString(std::to_string(0));
+
+							gameScreen->getPlayers()[0].setOwnedProvinces(gameScreen->getPlayers()[0].getOwnedProvinces() + 1);
+							gameScreen->getPlayers()[oldOwner].setOwnedProvinces(gameScreen->getPlayers()[oldOwner].getOwnedProvinces() - 1);
+
+							std::cout << "Player territories: " << gameScreen->getPlayers()[0].getOwnedProvinces() << std::endl; 
+
+							temp = temp + secondName + " Conquered!\n\nMove armies to ";
+							temp = temp + secondName + " by clicking on it again";
+
+							int hasPlayerWon = GameFunctions::isGameWon(gameScreen->getPlayers());
+
+							if (hasPlayerWon == 0) {
+								std::cout << "Player won!" << std::endl;
+								//Insert code to end game and either start new game or quit
+							}
 						}
 					}
 
@@ -204,7 +248,11 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui)
 						attackingArmies -= 1;
 						gameScreen->getProvinceList()[gameScreen->getFirstProvinceSelected() - 1].setArmyCount(attackingArmies);
 						gameScreen->getGameBoard().getArmyCounts()[gameScreen->getFirstProvinceSelected() - 1].setString(std::to_string(attackingArmies));
+
+						temp += ": Defeat! ";
 					}
+
+					gameScreen->updateNewArmiesText(temp);
 				}
 			}
 
@@ -259,7 +307,7 @@ void GameInputHandler::handleLeftClick(sf::RenderWindow& window, tgui::Gui& gui)
 
 					std::string temp = gameScreen->getNewArmiesText();
 					temp += gameScreen->getProvinceList()[province].getName();
-					temp += "\nClick on territory again to move army";
+					temp += "\n\nClick on territory again to move armies";
 
 					gameScreen->updateNewArmiesText(temp);
 					gameScreen->setIsSecondProvinceSelected(true);

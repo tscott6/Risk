@@ -47,3 +47,13 @@ int GameFunctions::calculateNewArmies(Board& gameBoard, int player) {
 
 	return newArmies;
 }
+
+int GameFunctions::isGameWon(std::vector<Player>& players) {
+	for (int i = 0; i < players.size(); i++) {
+		if (players[i].getOwnedProvinces() == 43) {
+			return i;
+		}
+	}
+
+	return -1;
+}

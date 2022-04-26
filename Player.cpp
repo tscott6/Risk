@@ -30,6 +30,10 @@ void Player::setOwnedProvinces(int number) {
 	ownedProvinces = number;
 }
 
+int Player::getOwnedProvinces() {
+	return ownedProvinces;
+}
+
 const bool& Player::getIsAI() {
 	return isAI;
 }

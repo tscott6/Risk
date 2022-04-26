@@ -95,6 +95,10 @@ std::vector<sf::Text>& Board::getArmyCounts() {
 	return armyCounts;
 }
 
+void Board::setArmyCount(std::string newCount, int index) {
+	armyCounts[index].setString(newCount);
+}
+
 void Board::clearArmyCounts() {
 	for (int i = 0; i < armyCounts.size(); i++) {
 		armyCounts[i].setString("0");

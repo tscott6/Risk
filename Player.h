@@ -19,6 +19,7 @@ public:
 	void setPlayerColour(std::string colour);
 	sf::Color getPlayerColour();
 	void setOwnedProvinces(int number);
+	int getOwnedProvinces();
 	const bool& getIsAI();
 
 	int getAvailableArmies();

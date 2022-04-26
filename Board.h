@@ -24,6 +24,7 @@ public:
 	std::vector<sf::CircleShape> getArmyTokens();
 	void clearArmyTokens();
 	std::vector<sf::Text>& getArmyCounts();
+	void setArmyCount(std::string newCount, int index);
 	void clearArmyCounts();
 	void clearOwners();
 

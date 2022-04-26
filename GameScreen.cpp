@@ -246,8 +246,20 @@ void GameScreen::clearProvinceSelections() {
 	isSecondProvinceSelected = false;
 }
 
+int GameScreen::getAttackRound() {
+	return attackRound;
+}
+
+void GameScreen::setAttackRound(int number) {
+	attackRound = number;
+}
+
 void GameScreen::AISetup() {
 	AI::setupSelectProvince(players, gameBoard);
+}
+
+void GameScreen::AIPlaceArmies(Player& player, int playerID) {
+	AI::placeArmies(player, playerID, gameBoard);
 }
 
 

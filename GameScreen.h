@@ -16,10 +16,11 @@ private:
 	std::vector<std::string> m_GamePhases = { "setup", "place armies", "attack", "move" };
 	std::string m_Phase = "setup";
 
-	//Attack phase controls
+	//Attack phase controls and visual cues
 	int firstProvinceSelected, secondProvinceSelected;
 	bool isFirstProvinceSelected = false;
 	bool isSecondProvinceSelected = false;
+	int attackRound = 0;
 
 	Board gameBoard;
 	std::vector<Player> players;
@@ -85,8 +86,12 @@ public:
 	void setIsSecondProvinceSelected(bool selected);
 	bool getIsSecondProvinceSelected();
 
+	int getAttackRound();
+	void setAttackRound(int number);
+
 	void clearProvinceSelections();
 
 	void AISetup();
+	void AIPlaceArmies(Player& player, int playerID);
 };
 
